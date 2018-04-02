@@ -10,7 +10,22 @@ Whenever a message is received by the server, the server prints to the console a
 # today
 
 import socket
-from datetime import date
+from datetime import datetime
+
+sock = socket.socket(
+    socket.AF_INET,
+    socket.SOCK_STREAM,
+    socket.IPPROTO_TCP)
+sock
+PORT = 3000
+address = ('127.0.0.1', PORT)
+sock.bind(address)
+sock
+sock.listen(1)
+daytime = datetime.now().strftime("%H:%M:%S %d/%m/%y")
+print('--- Starting server on port {} at {} ---'.format(PORT, daytime))
+conn, addr = sock.accept()
+
 
 
 
